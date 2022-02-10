@@ -109,10 +109,6 @@ static void HexDump(char *str, int size) {
 
 static int transact_proxy_auto(struct IPCThreadState *f, unsigned int a, Parcel *b, Parcel *c, unsigned int d) {
     int result;
-    // In automatic mode, if you need to call the original function,
-    // please always use the BYTEHOOK_CALL_PREV() macro.
-//    LOG("Params a=%x b=%" PRIxPTR" c=%" PRIxPTR" d=%" PRIxPTR, a, (uintptr_t) b, (uintptr_t) c, (uintptr_t) d);
-
     /**
      *          data in parcel
         const mData_LOC         = 0x28;
@@ -120,39 +116,38 @@ static int transact_proxy_auto(struct IPCThreadState *f, unsigned int a, Parcel 
         const mObjects_LOC      = 0x48;
         const mObjectsSize_LOC  = 0x50;
      */
+    unsigned long *mData = (unsigned long *) ((uintptr_t) b + 0x28);
+    unsigned int *mDataSize = (unsigned int *) ((uintptr_t) b + 0x30);
+    unsigned long *mObject = (unsigned long *) ((uintptr_t) b + 0x48);
+    unsigned int *mObjectSize = (unsigned int *) ((uintptr_t) b + 0x50);
 
-    if (a == 11) {  // transaction_code 为 11
-        unsigned long *mData = (unsigned long *) ((uintptr_t) b + 0x28);
-        unsigned int *mDataSize = (unsigned int *) ((uintptr_t) b + 0x30);
+    unsigned int *block = (unsigned int *) (*mData + 0x2c); // parcel 中紧跟在 interface_token 之后的 int 数据
 
-        int *block = (int *) *mData + 0x2c;
-        LOG("block is: %d", *block);
-
+    if (a == 11 && *block == 1) {  // transaction_code 为 11, parcel 中对应的 int 值为 1
+        LOG("transaction_code is: %d, block is: %d", a, *block);
         const char *target_interface = "vendor.huawei.hardware.ai@1.1::IAiModelMngr";
         if (strcmp((char *) *mData, target_interface) == 0) {   // interface_token 为 vendor.huawei.hardware.ai@1.1::IAiModelMngr
-
             LOG("Params Transaction_code=%d Parcel_data=0x%" PRIxPTR" Parcel_reply=0x%" PRIxPTR" unsigned_int=%d", a, (uintptr_t) b, (uintptr_t) c, d);
             LOG("Data  : 0x%" PRIxPTR", Data_Size  : %d", (uintptr_t) *mData, *mDataSize);
-
-            unsigned long *mObject = (unsigned long *) ((uintptr_t) b + 0x48);
-            unsigned int *mObjectSize = (unsigned int *) ((uintptr_t) b + 0x50);
             LOG("Object: 0x%" PRIxPTR", Object_Size: %d", (uintptr_t) *mObject, *mObjectSize);
             unsigned long *object_offset = (unsigned long *) (*mObject + 24);
             unsigned long object_pos = *mData + *object_offset;
-            LOG("bytehook canshu object_offset=%lx, object_pos=%lx", *object_offset, object_pos);
+            LOG("bytehook param object_offset=%lx, object_pos=%lx", *object_offset, object_pos);
             //取该object的buffer区域
             unsigned long *buffer = (unsigned long *) (object_pos + 0x8);
+
             //取buffer区域中fd以及size
             unsigned int *fd = (unsigned int *) (*buffer + 0x0c);
             unsigned int *size = (unsigned int *) (*buffer + 0x18);
-            LOG("bytehook canshu fd=%x, size=%x", *fd, *size);
+            LOG("bytehook param fd=%x, size=%x", *fd, *size);
             void *ptr = mmap(NULL, *size, PROT_READ | PROT_WRITE, MAP_SHARED, (int) *fd, 0);
-            LOG("bytehook value 0x%" PRIxPTR, ((uintptr_t) ptr + 0x53e8));  //  偏移 0x53e8
+
+            LOG("bytehook target: 0x%" PRIxPTR, ((uintptr_t) ptr + 0x53e8));  //  修改 ashmem 中 0x53e8 偏移处的数据
             HexDump((char *) ((uintptr_t) ptr + 0x53e8), 128);
-            int * old_v = (int *) ((uintptr_t) ptr + 0x53e8);
-            LOG("value change : %x --> %x",*old_v ,  ~(*old_v));
-//            *(int *) ((uintptr_t) ptr + 0x53e8) = -0x1010105;
-            *(int *) ((uintptr_t) ptr + 0x53e8) = ~(*old_v);    //  取反
+            int *old_v = (int *) ((uintptr_t) ptr + 0x53e8);
+            LOG("value change : %x --> %x", *old_v, ~(*old_v));
+
+            *(int *) ((uintptr_t) ptr + 0x53e8) = ~(*old_v);    //  取反 即"FBFEFEFE"
             int ret = munmap(ptr, *size);
             if (ret == 0) {
                 LOG("bytehook update successfully!");
