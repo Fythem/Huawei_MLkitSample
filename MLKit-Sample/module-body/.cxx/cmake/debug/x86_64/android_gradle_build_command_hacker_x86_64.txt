@@ -1,0 +1,7 @@
+Executable : /Users/fy/Library/Android/sdk/cmake/3.18.1/bin/ninja
+arguments : 
+-C
+/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86_64
+hacker
+jvmArgs : 
+

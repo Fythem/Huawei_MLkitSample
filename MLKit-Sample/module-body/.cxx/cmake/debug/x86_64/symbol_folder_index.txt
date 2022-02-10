@@ -1,0 +1,1 @@
+/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/build/intermediates/cmake/debug/obj/x86_64

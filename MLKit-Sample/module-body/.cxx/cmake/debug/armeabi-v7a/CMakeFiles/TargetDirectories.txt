@@ -1,0 +1,3 @@
+/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/armeabi-v7a/CMakeFiles/detour.dir

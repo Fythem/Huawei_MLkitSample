@@ -1,0 +1,2 @@
+ninja: Entering directory `/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86_64'
+ninja: no work to do.

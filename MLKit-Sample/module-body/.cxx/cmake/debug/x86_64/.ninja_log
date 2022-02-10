@@ -1,0 +1,14 @@
+# ninja log v5
+0	75	1644393733	CMakeFiles/hookee.dir/hookee.c.o	62824731b406fc1d
+0	90	1644393733	CMakeFiles/hacker.dir/hacker.c.o	f74dfa458af41188
+76	102	1644393733	/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/build/intermediates/cmake/debug/obj/x86_64/libhookee.so	82311900b0356fff
+90	116	1644393733	/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/build/intermediates/cmake/debug/obj/x86_64/libhacker.so	468926ffdd298910
+0	368	1644393733	CMakeFiles/native_test.dir/native-lib.cpp.o	f75224e025339c94
+368	426	1644393733	/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/build/intermediates/cmake/debug/obj/x86_64/libnative_test.so	3cb2eda8b74a902e
+1	45	1644399254	build.ninja	28bb418aa86ec575
+0	6	0	clean	2f0796816b0cc9f7
+0	49	1644399265	build.ninja	28bb418aa86ec575
+1	103	1644399265	CMakeFiles/hacker.dir/hack.c.o	53eb631b48cb6543
+103	170	1644399266	/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/build/intermediates/cmake/debug/obj/x86_64/libhacker.so	ef961d7043ab3c86
+0	52	1644458035	build.ninja	28bb418aa86ec575
+0	6	0	clean	2f0796816b0cc9f7

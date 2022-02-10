@@ -1,0 +1,29 @@
+{
+  "buildFiles": [
+    "/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/fy/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+      "-C",
+      "/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/fy/Library/Android/sdk/cmake/3.18.1/bin/ninja",
+    "-C",
+    "/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "hacker::@6890427a1f51a3e7e1df": {
+      "artifactName": "hacker",
+      "abi": "x86_64",
+      "output": "/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/build/intermediates/cmake/debug/obj/x86_64/libhacker.so",
+      "runtimeFiles": [
+        "/Users/fy/.gradle/caches/transforms-3/22c50a3d8d9cb47070655036a29cb284/transformed/jetified-bytehook-1.0.4/prefab/modules/bytehook/libs/android.x86_64/libbytehook.so"
+      ]
+    }
+  }
+}

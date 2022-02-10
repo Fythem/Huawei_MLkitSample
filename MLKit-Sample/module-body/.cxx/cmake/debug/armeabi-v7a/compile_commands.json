@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/armeabi-v7a",
+  "command": "/Users/fy/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang --target=armv7-none-linux-androideabi19 --gcc-toolchain=/Users/fy/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/fy/Library/Android/sdk/ndk/21.4.7075529/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Ddetour_EXPORTS -isystem /Users/fy/.gradle/caches/transforms-3/22c50a3d8d9cb47070655036a29cb284/transformed/jetified-bytehook-1.0.4/prefab/modules/bytehook/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security  -O0 -fno-limit-debug-info  -fPIC -Weverything -Werror -o CMakeFiles/detour.dir/detour.c.o -c /Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/src/main/cpp/detour.c",
+  "file": "/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/src/main/cpp/detour.c"
+}
+]

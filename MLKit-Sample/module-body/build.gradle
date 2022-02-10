@@ -1,0 +1,115 @@
+apply plugin: 'com.android.application'
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "29.0.3"
+    defaultConfig {
+        applicationId "com.mlkit.sample.body"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 3200300
+        versionName "3.2.0.300"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    lintOptions {
+        disable 'GoogleAppIndexingWarning'
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    aaptOptions {
+        noCompress "mslite"
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+//    sourceSets {
+//        main {
+//            jniLibs.srcDirs = ['jniLibs']
+//        }
+//    }
+
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+            version '3.18.1'
+        }
+    }
+
+    buildFeatures {
+        prefab true
+    }
+    packagingOptions {
+        pickFirst '**/libbytehook.so'
+    }
+
+}
+
+dependencies {
+    implementation 'com.bytedance:bytehook:1.0.4'
+
+
+    implementation fileTree(dir: 'libs', include: ['*.aar'])
+    implementation 'com.huawei.hms:ml-computer-vision-cloud:2.0.5.300'
+
+    // Face
+    implementation 'com.huawei.hms:ml-computer-vision-face:2.0.5.300'
+    implementation 'com.huawei.hms:ml-computer-vision-face-emotion-model:2.0.5.300'
+    implementation 'com.huawei.hms:ml-computer-vision-face-feature-model:2.0.5.300'
+    implementation 'com.huawei.hms:ml-computer-vision-face-shape-point-model:2.0.5.300'
+    implementation 'com.huawei.hms:ml-computer-vision-face-3d-model:2.0.5.300'
+
+    // Skeleton detection SDK.
+    implementation 'com.huawei.hms:ml-computer-vision-skeleton:2.0.4.300'
+    // Skeleton detection model.
+    implementation 'com.huawei.hms:ml-computer-vision-skeleton-model:2.0.4.300'
+    // Yoga detection model.
+    implementation 'com.huawei.hms:ml-computer-vision-yoga-model:2.0.4.300'
+
+    // Liveness Detection sdk and FULL SDK
+    implementation 'com.huawei.hms:ml-computer-vision-livenessdetection:2.2.0.300'
+
+    // handkeypoint
+    implementation'com.huawei.hms:ml-computer-vision-handkeypoint:2.1.0.300'
+    implementation'com.huawei.hms:ml-computer-vision-handkeypoint-model:2.1.0.300'
+    implementation 'com.huawei.hms:ml-computer-vision-gesture-model:2.1.0.300'
+
+    //faceVerification
+    implementation 'com.huawei.hms:ml-computer-vision-faceverify:2.2.0.300'
+    implementation 'com.huawei.hms:ml-computer-vision-faceverify-model:2.2.0.300'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    testImplementation 'junit:junit:4.13.1'
+
+
+}
+apply plugin: 'com.huawei.agconnect'
