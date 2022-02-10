@@ -1,3 +1,0 @@
-/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
-/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
-/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86/CMakeFiles/detour.dir

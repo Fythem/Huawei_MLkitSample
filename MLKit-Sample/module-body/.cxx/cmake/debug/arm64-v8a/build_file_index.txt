@@ -1,1 +1,0 @@
-/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/src/main/cpp/CMakeLists.txt

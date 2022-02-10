@@ -1,7 +1,0 @@
-ninja: Entering directory `/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86_64'
-[0/1] Re-running CMake...
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/x86_64
-[1/2] Building C object CMakeFiles/hacker.dir/hack.c.o
-[2/2] Linking C shared library /Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/build/intermediates/cmake/debug/obj/x86_64/libhacker.so

@@ -1,2 +1,0 @@
-ninja: Entering directory `/Users/fy/AndroidStudioProjects/hms-ml-demo/MLKit-Sample/module-body/.cxx/cmake/debug/armeabi-v7a'
-ninja: no work to do.
