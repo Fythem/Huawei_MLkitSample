@@ -22,7 +22,7 @@ public class FyApplication extends Application {
         Log.i(TAG, "byteHook init, return: " + r);
 
         // load hacker
-        System.loadLibrary("hack");
+        System.loadLibrary("detour");
 
     }
 }

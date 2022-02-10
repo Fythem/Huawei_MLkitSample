@@ -113,11 +113,23 @@ static int transact_proxy_auto(struct IPCThreadState *f, unsigned int a, Parcel 
     // please always use the BYTEHOOK_CALL_PREV() macro.
 //    LOG("Params a=%x b=%" PRIxPTR" c=%" PRIxPTR" d=%" PRIxPTR, a, (uintptr_t) b, (uintptr_t) c, (uintptr_t) d);
 
-    if (a == 11) {
+    /**
+     *          data in parcel
+        const mData_LOC         = 0x28;
+        const mDataSize_LOC     = 0x30;
+        const mObjects_LOC      = 0x48;
+        const mObjectsSize_LOC  = 0x50;
+     */
+
+    if (a == 11) {  // transaction_code 为 11
         unsigned long *mData = (unsigned long *) ((uintptr_t) b + 0x28);
         unsigned int *mDataSize = (unsigned int *) ((uintptr_t) b + 0x30);
+
+        int *block = (int *) *mData + 0x2c;
+        LOG("block is: %d", *block);
+
         const char *target_interface = "vendor.huawei.hardware.ai@1.1::IAiModelMngr";
-        if (strcmp((char *) *mData, target_interface) == 0) {
+        if (strcmp((char *) *mData, target_interface) == 0) {   // interface_token 为 vendor.huawei.hardware.ai@1.1::IAiModelMngr
 
             LOG("Params Transaction_code=%d Parcel_data=0x%" PRIxPTR" Parcel_reply=0x%" PRIxPTR" unsigned_int=%d", a, (uintptr_t) b, (uintptr_t) c, d);
             LOG("Data  : 0x%" PRIxPTR", Data_Size  : %d", (uintptr_t) *mData, *mDataSize);
